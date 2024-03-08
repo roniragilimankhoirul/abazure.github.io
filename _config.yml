@@ -1,11 +1,11 @@
 # Site settings
-title: "abazure"
-SEOTitle: Roni's Personal Site
+title: "Roni Ragil Iman Khoirul"
+SEOTitle: Roni Ragil Iman Khoirul
 header-img: img/hollow-knight.png
 email: roniragil11@gmail.com
 description: "Roni Ragil Iman Khoirul's Personal Website"
 keyword: "abazure, linux, roni ragil, roni ragil iman khoirul"
-url: "https://hynduf.github.io" # your host, for absolute URL
+url: "https://roniragilimankhoirul.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Publish posts or collection documents with a future date.
