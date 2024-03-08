@@ -1,0 +1,107 @@
+---
+layout: default
+---
+
+<div class="animated-text">
+  <img src="img/catppuccin-cat-footer.png" alt="cat-footer" />
+  <div>
+    <i id="quote"></i>
+    <p id="author">~ abazure (i ask chatGPT, btw)</p>
+    <div class="header-line">
+      <strong> ━━━━━━ ❖ ━━━━━━ </strong>
+    </div>
+  </div>
+</div>
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    {% if site.sidebar == false %}
+    <!-- NO SIDEBAR -->
+    <!-- PostList Container -->
+    <div
+      class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 postlist-container"
+    >
+      {{ content }}
+    </div>
+    <div></div>
+    <!-- Sidebar Container -->
+    <div
+      class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 sidebar-container"
+    >
+      <!-- Featured Tags -->
+      {% include featured-tags.html %}
+
+      <!-- Friends Blog -->
+      {% include friends.html %}
+    </div>
+    {% else %}
+
+    <!-- USE SIDEBAR -->
+    <!-- PostList Container -->
+    <div
+      class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 postlist-container"
+    >
+      {{ content }}
+    </div>
+    <!-- Sidebar Container -->
+    <div
+      class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container"
+    >
+      <!-- Short About -->
+      {% include short-about.html %}
+
+      <!-- Featured Tags -->
+      {% include featured-tags.html %}
+
+      <!-- Friends Blog -->
+      {% include friends.html %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% if site.page-mathjax %}
+<!-- Add support for Mathjax by Voleking-->
+<!-- If you want to see formulas well in post preview, Maybe you should add this.-->
+<!-- However, most of the time formulas may not appear in the post preview, you can delete it.-->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+></script>
+{% endif %}
+
+<!-- Add this script to fetch and display random quote from JSON -->
+<!-- Add this script to fetch and display random quote from JSON -->
+<script>
+  document.addEventListener("DOMContentLoaded", async function () {
+    try {
+      // Fetch quotes from the JSON file
+      const response = await fetch("../quote/quotes.json");
+      const data = await response.json();
+
+      // Get a random quote
+      const randomIndex = Math.floor(Math.random() * data.quotes.length);
+      const randomQuote = data.quotes[randomIndex];
+
+      // Display the quote in the HTML
+      const quoteElement = document.getElementById("quote");
+      quoteElement.innerHTML = `"${randomQuote}"`;
+    } catch (error) {
+      console.error("Error fetching quotes:", error);
+    }
+  });
+</script>
